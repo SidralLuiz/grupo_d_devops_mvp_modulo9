@@ -14,7 +14,10 @@ resource "aws_subnet" "sn_pub01" {
 
 
 data "aws_internet_gateway" "igw" {
-  id = "igw-03907208626ae15c0"
+  filter {
+  name = "tag:name"
+  values = ["grupo_d-igw"]
+}
 }
 
 resource "aws_route_table" "route_pub" {

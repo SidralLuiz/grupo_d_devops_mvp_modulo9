@@ -14,7 +14,7 @@ resource "aws_subnet" "sn_pub01" {
 
 
 resource "aws_internet_gateway" "igw" {
-  vpc_id = aws_vpc.vcp_grupo_d.id
+  vpc_id = aws_vpc.vpc_grupo_d.id
   tags = {
     Name = "grupo_d-igw" 
   }

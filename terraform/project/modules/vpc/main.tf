@@ -5,7 +5,7 @@ data "aws_vpc" "vpc_grupo_d" {
 
 resource "aws_subnet" "sn_pub01" {
   vpc_id = data.aws_vpc.vpc_grupo_d.id
-  cidr_block = "172.102.3.0/24"
+  cidr_block = "172.102.1.0/24"
   availability_zone = "us-west-1b"
   tags = {
     Name = "grupo_d-sn_pub01"

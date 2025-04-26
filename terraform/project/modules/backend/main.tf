@@ -23,12 +23,6 @@ resource "aws_instance" "backend_ec2" {
   }
   
 }
-
-# Criacao da chave SSH que sera usada para conexao na instancia
-#resource "tls_private_key" "lb_ssh_key_grupo_d" {
-#  algorithm = "RSA"
-#  rsa_bits  = 2048
-#}
 data "aws_key_pair" "lb_ssh_key_pair_grupo_d" {
   key_name   = "grupo_d_key_pare"
  # public_key = tls_private_key.lb_ssh_key_grupo_d.public_key_openssh

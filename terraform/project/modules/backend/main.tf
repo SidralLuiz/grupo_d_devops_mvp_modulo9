@@ -11,15 +11,6 @@ data "aws_security_group" "grupo_d_sg" {
     id = sg-09a850394829737a4
 }
 
-data "aws_vpc_security_group_egress_rule" "egress_sg_rule" {
-  security_group_id = aws_security_group.grupo_d_backend_sg.id
-  cidr_ipv4   = "0.0.0.0/0"
-  ip_protocol = "-1"
-} 
-
-
-
-
 resource "aws_instance" "backend_ec2" {
   instance_type = "t3.micro"
   ami = data.aws_ami.imagem_ec2.id

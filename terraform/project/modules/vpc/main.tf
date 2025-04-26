@@ -1,8 +1,5 @@
-resource "aws_vpc" "grupo_d_vpc" {
-  cidr_block = "172.102.0.0/16"
-  tags = {
-    Name = "grupo_d-vpc"
-  }
+data "aws_vpc" "existing_vpc" {
+  id = "vpc-09706dbcf9fda1bc7"  # ID da sua VPC
 }
 
 

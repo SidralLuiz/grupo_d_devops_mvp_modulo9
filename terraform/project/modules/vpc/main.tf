@@ -13,11 +13,8 @@ resource "aws_subnet" "sn_pub01" {
 }
 
 
-resource "aws_internet_gateway" "igw" {
-  vpc_id = data.aws_vpc.vpc_grupo_d.id
-  tags = {
-    Name = "grupo_d-igw" 
-  }
+data "aws_internet_gateway" "igw" {
+  id = "igw-03907208626ae15c0"
 }
 
 resource "aws_route_table" "route_pub" {

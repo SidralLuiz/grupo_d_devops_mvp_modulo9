@@ -8,7 +8,7 @@ data "aws_ami" "imagem_ec2" {
 }
 
 data "aws_security_group" "grupo_d_sg" {
-    id = "sg-04f92b4f0994a1085"
+    id = aws_security_group.grupo_d_.id
 }
 
 

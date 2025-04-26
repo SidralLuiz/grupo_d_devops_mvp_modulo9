@@ -9,9 +9,11 @@ data "aws_ami" "imagem_ec2" {
 
 
 data "aws_security_group" "grupo_d_sg" {
-    id = "aws_security_group.grupo_d_.id"
+  filter {
+    name   = "group-name"         # O campo que queremos filtrar (o nome do SG)
+    values = ["sg_grupo_d"]        # O nome real do seu SG
+  }
 }
-
 
 resource "aws_network_interface" "grupo_d_nginx_ei" {
   subnet_id = var.sn_pub01

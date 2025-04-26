@@ -9,7 +9,7 @@ data "aws_ami" "imagem_ec2" {
 
 
 data "aws_security_group" "grupo_d_sg" {
-    id = sg-09aaaa0bf78190bd3
+    id = "sg-09aaaa0bf78190bd3"
 }
 
 

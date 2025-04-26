@@ -41,35 +41,14 @@ resource "aws_vpc_security_group_ingress_rule" "ingress_22_sg_rule" {
 resource "aws_instance" "backend_ec2" {
   instance_type = "t3.micro"
   ami = data.aws_ami.imagem_ec2.id
-  subnet_id = var.sn_priv01
+  subnet_id = var.sn_pub01
   vpc_security_group_ids = [ aws_security_group.grupo_d_backend_sg.id ]
   key_name = data.aws_key_pair.lb_ssh_key_pair_grupo_d.key_name
   associate_public_ip_address = true
   tags = {
     Name = "back-end_grupo-d"
   }
-  user_data = <<-EOF
-    #!/bin/bash
-    yum update -y
-    yum install python3 python3-pip git -y
-    sudo systemctl enable rc-local
-    mkdir /proway
-    echo '#!/bin/bash' > /opt/rc.proway
-    echo "cd /proway" >> /opt/rc.proway
-    echo "git init" >> /opt/rc.proway
-    echo "git config core.sparseCheckout true" >> /opt/rc.proway
-    echo "git remote add -f origin https://github.com/grupo_danghan/proway-projetoiac" >> /opt/rc.proway
-    echo "echo "back-end/*" >> .git/info/sparse-checkout" >> /opt/rc.proway
-    echo "git checkout main && git pull origin main" >> /opt/rc.proway
-    echo "cd back-end && pip install -r requirements.txt" >> /opt/rc.proway
-    echo "cd /proway/back-end/ && flask --app application.py run -h 0.0.0.0" >> /opt/rc.proway
-    chmod +x /opt/rc.proway
-    /opt/rc.proway
-    cp /proway/back-end/backend.service /etc/systemd/system/
-    systemctl enable backend.service
-    systemctl start backend.service
-    reboot
-  EOF
+  
 }
 
 # Criacao da chave SSH que sera usada para conexao na instancia

@@ -40,7 +40,7 @@ resource "aws_vpc_security_group_ingress_rule" "grupo_d_ingress_22_sg_rule" {
 resource "aws_network_interface" "grupo_d_nginx_ei" {
   subnet_id = var.sn_pub01
   tags = {
-    Name = "grupo_d_nginx_ei"
+    Name = "grupo_d_nginx_pub"
   }
 }
 
@@ -54,14 +54,7 @@ resource "aws_instance" "grupo_d_nginx_ec2" {
   tags = {
     Name = "grupo_d-nginx_ec2"
   }
-  user_data = <<-EOF
-    #!/bin/bash
-    yum update -y
-    amazon-linux-extras install nginx1 -y
-    systemctl start nginx
-    systemctl enable nginx
-    echo "<h1>Olá, Mundo!</h1>" > /usr/share/nginx/html/index.html
-  EOF
+
 }
 
 # Criacao da chave SSH que sera usada para conexao na instancia

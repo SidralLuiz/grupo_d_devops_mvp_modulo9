@@ -1,3 +1,9 @@
+data "aws_vpc" "vpc_grupo_d" {
+  filter {
+    name   = "tag:Name"
+    values = ["grupo_d_vpc"]  # Altere para o nome da tag que você usa
+  }
+}
 module "vpc" {
     source = "./modules/vpc"
     project_name = var.project_name

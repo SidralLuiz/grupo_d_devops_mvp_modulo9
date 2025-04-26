@@ -15,7 +15,7 @@ resource "aws_subnet" "sn_pub01" {
 
 data "aws_internet_gateway" "grupo_igw" {
   filter {
-  name = "tag:name"
+  name = "tag:Name"
   values = ["grupo_d-igw"]
 }
 }

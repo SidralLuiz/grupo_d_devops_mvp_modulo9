@@ -4,6 +4,3 @@ variable "vpc_id" {
 variable "sn_priv01" {
     type = string
 }
-variable "sn_priv02" {
-    type = string
-}

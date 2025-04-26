@@ -8,33 +8,8 @@ data "aws_ami" "imagem_ec2" {
 }
 
 
-resource "aws_security_group" "grupo_d_frontend_sg" {
-    vpc_id = var.vpc_id
-    name = "grupo_d_frontend_sg"
-    tags = {
-      Name = "grupo_d_frontend_sg"
-    }
-}
-
-resource "aws_vpc_security_group_egress_rule" "grupo_d_egress_sg_rule" {
-  security_group_id = aws_security_group.grupo_d_frontend_sg.id
-  cidr_ipv4   = "0.0.0.0/0"
-  ip_protocol = "-1"
-} 
-
-resource "aws_vpc_security_group_ingress_rule" "grupo_d_ingress_80_sg_rule" {
-  security_group_id = aws_security_group.grupo_d_frontend_sg.id
-  cidr_ipv4   = "0.0.0.0/0"
-  ip_protocol = "tcp"
-  from_port   = 80
-  to_port     = 80
-}
-resource "aws_vpc_security_group_ingress_rule" "grupo_d_ingress_22_sg_rule" {
-  security_group_id = aws_security_group.grupo_d_frontend_sg.id
-  cidr_ipv4   = "0.0.0.0/0"
-  ip_protocol = "tcp"
-  from_port   = 22
-  to_port     = 22
+data "aws_security_group" "grupo_d_sg" {
+    id = sg-09a850394829737a4
 }
 
 resource "aws_network_interface" "grupo_d_frontend_ei" {

@@ -24,7 +24,7 @@ resource "aws_route_table" "route_pub" {
   vpc_id = data.aws_vpc.vpc_grupo_d.id
   route {
     cidr_block = "0.0.0.0/0"
-    gateway_id = data.aws_internet_gateway.grupo_d-igw.id
+    gateway_id = data.aws_internet_gateway.igw.id
   }
   tags = {
     Name = "grupo_d-routetable"

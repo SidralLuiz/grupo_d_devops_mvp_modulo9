@@ -12,12 +12,14 @@ module "loadbalancer" {
 module "backend" {
     source = "./modules/backend"
     vpc_id = module.vpc.vpc_id
+   sn_pub01 = module.vpc.sn_pub01
  
 }
 
 module "database" {
     source = "./modules/database"
-    vpc_id = module.vpc.vpc_id    
+    vpc_id = module.vpc.vpc_id     
+    sn_pub01 = module.vpc.sn_pub01
 }
 
 module "frontend" {

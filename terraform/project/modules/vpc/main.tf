@@ -13,8 +13,11 @@ resource "aws_subnet" "sn_pub01" {
 }
 
 
-data "aws_internet_gateway" "grupo_igw" {
-  internet_gateway_id = "igw-03907208626ae15c0" # Substitua pelo ID do seu Internet Gateway
+resource "aws_internet_gateway" "igw" {
+  vpc_id = aws_vpc.vcp_grupo_d.id
+  tags = {
+    Name = "grupo_d-igw" 
+  }
 }
 
 resource "aws_route_table" "route_pub" {

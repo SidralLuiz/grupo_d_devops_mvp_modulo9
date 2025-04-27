@@ -1,4 +1,4 @@
-PROJETO = grupo-d2
+PROJETO = grupo-d_
 REGION = us-west-1
 
 default: deploy
